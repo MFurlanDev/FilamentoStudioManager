@@ -22,3 +22,15 @@ public class Main {
         int opcionElegida = scanner.nextInt();
     }
 }
+
+/*
+    Ejemplo cliente
+
+    Cliente cliente1 = new Cliente(
+        1,
+        "Erkuden",
+        "erkuden@email.com",
+        "612345678",
+        "Pamplona"
+    );
+*/
