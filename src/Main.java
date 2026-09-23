@@ -51,9 +51,101 @@ public class Main {
             opcionCliente = Integer.parseInt(scanner.nextLine());
 
             switch (opcionCliente) {
-
+                case 1:
+                    darAltaCliente();
+                    break;
+                case 2:
+                    listarCliente();
+                    break;
+                case 3:
+                    buscarCliente();
+                    break;
+                case 0:
+                    System.out.println("Cerrando el programa...");
+                    break;
+                default:
+                    System.out.println("Opcion incorrecta");
             }
         } while (opcionCliente != 0);
+    }
+
+    public static void darAltaCliente() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("\nDAR DE ALTA A UN CLIENTE");
+        System.out.println("-------------------------");
+
+        System.out.println("Código de cliente");
+        int codigoCliente = Integer.parseInt(scanner.nextLine());
+
+        //Comprobar que el codigo no esta repetido
+        if (encontrarCliente(codigoCliente) != null) {
+            System.out.println("Ya existe un cliente con este código.");
+            return;
+        }
+
+        System.out.println("Nombre: ");
+        String nombreCliente = scanner.nextLine();
+
+        System.out.println("Correo electrónico: ");
+        String correoCliente = scanner.nextLine();
+
+        System.out.println("Teléfono: ");
+        String telefonoCliente = scanner.nextLine();
+
+        System.out.println("Dirección");
+        String direccionCliente = scanner.nextLine();
+
+        Cliente nuevoCliente = new Cliente(
+                codigoCliente,
+                nombreCliente,
+                correoCliente,
+                telefonoCliente,
+                direccionCliente
+        );
+
+        clientes.add(nuevoCliente);
+
+        System.out.println("Cliente registrado correctamente.");
+    }
+
+    public static void listarCliente() {
+        System.out.println("\nLISTADO DE CLIENTES");
+        System.out.println("-------------------------");
+
+        if (clientes.isEmpty()) {
+            System.out.println("Todavía no hay clientes registrados.");
+            return;
+        }
+
+        for (Cliente cliente : clientes) {
+            cliente.mostrarCliente();
+        }
+    }
+
+    public static void buscarCliente() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce el código del cliente: ");
+        int codigoBuscado = Integer.parseInt(scanner.nextLine());
+
+        Cliente clienteEncontrado = encontrarCliente(codigoBuscado);
+
+        if (clienteEncontrado != null) {
+            System.out.println("Cliente encontrado:");
+            clienteEncontrado.mostrarCliente();
+        } else {
+            System.out.println("No existe ningún cliente con ese código.");
+        }
+    }
+
+    public static Cliente encontrarCliente(int codigoBuscado) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCodigoCliente() == codigoBuscado) {
+                return cliente;
+            }
+        }
+
+        return null;
     }
 }
 

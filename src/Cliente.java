@@ -10,7 +10,7 @@ public class Cliente {
     private LocalDate fechaAltaCliente;
 
     //Constructor
-    public Cliente (int codigoCliente, String nombreCliente, String correoCliente, String telefonoCliente, String direccionCliente, LocalDate fechaAltaCliente) {
+    public Cliente (int codigoCliente, String nombreCliente, String correoCliente, String telefonoCliente, String direccionCliente) {
         this.codigoCliente = codigoCliente;
         this.nombreCliente = nombreCliente;
         this.correoCliente = correoCliente;
