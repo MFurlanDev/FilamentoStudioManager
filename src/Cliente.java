@@ -18,4 +18,16 @@ public class Cliente {
         this.direccionCliente = direccionCliente;
         this.fechaAltaCliente = LocalDate.now();
     }
+    public int getCodigoCliente() {
+        return codigoCliente;
+    }
+    public void mostrarCliente() {
+        System.out.println("-------------------------");
+        System.out.println("Código: " + codigoCliente);
+        System.out.println("Nombre: " + nombreCliente);
+        System.out.println("Correo: " + correoCliente);
+        System.out.println("Teléfono: " + telefonoCliente);
+        System.out.println("Dirección: " + direccionCliente);
+        System.out.println("Fecha de alta: " + fechaAltaCliente);
+    }
 }
